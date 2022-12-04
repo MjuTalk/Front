@@ -81,14 +81,7 @@ const index = ({ isModal, setModal }) => {
           nav2="버스" />
       </h1>
       <div>
-        <ModalBody>
-          <Navbar2
-            nav7="기흥역"
-            nav8="명지대학교"
-            nav9="시내"
-            nav10="명지대역" />
-          
-        </ModalBody>
+        
         <BoardListWrapper>
             <div className="boardList-header">버스📝</div>
             <div className="boardList-body" />

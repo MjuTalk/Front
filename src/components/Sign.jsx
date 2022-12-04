@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../styles/index.css';
 
 const API_END_POINT = 'http://43.200.116.196:8080';
@@ -10,8 +10,7 @@ const Signup = () => {
   const [major, setMajor] = useState('');
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
-  const [stNum, setStNum] = useState('');
-  const [re_pw, setRe_pw] = useState('');
+  const [stnum, setStnum] = useState('');
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
@@ -23,25 +22,34 @@ const Signup = () => {
         password: pw,
         name: name,
         subject: major,
-        studentId: stNum,
+        studentId: stnum,
       })
       .then(function (response) {
         if (response.code === 201) {
           console.log(response);
           alert('회원가입이 완료되었습니다.');
+          goToSignIn()
         }
         if (response.code === 409) {
           console.log(response);
           alert(response.result.message);
         } else {
           alert('회원가입이 완료되었습니다.');
+          goToSignIn()
         }
       })
       .catch(function (error) {
         alert('회원가입 실패. 다시 입력해 주세요.');
+        
         console.log(error);
       });
   };
+
+
+const goToSignIn = () => {
+    navigate('/');
+}
+
 
   const onChangeName = (e) => {
     setName(e.target.value);
@@ -55,12 +63,8 @@ const Signup = () => {
   const onChangePw = (e) => {
     setPw(e.target.value);
   };
-  const onChangeNum = (e) => {
-    setStNum(e.target.value);
-  };
-  const onChangePasswordChk = (e) => {
-    //비밀번호를 입력할때마다 password 를 검증하는 함수
-    setRe_pw(e.target.value);
+  const onChangeStnum = (e) => {
+    setStnum(e.target.value);
   };
 
   /**추가**/
@@ -80,73 +84,74 @@ const Signup = () => {
 
   return (
     <div>
-      <div id="container" className="main_container">
-        <article>
-          <div className="login_wrapper">
-            <form onSubmit={onSubmit} className="login_form">
-              <input
-                id="LOGIN_NAME"
-                value={name}
-                required
-                onChange={onChangeName}
-                className="login_text"
-                type="text"
-                name="id"
-                placeholder="이름"
-              />
+      
+       <h1 className='titleWrap'>
+                명지톡톡
+                회원가입
+            </h1>
+            
+        <div className='page'>
+                <div className='contentWrap'>
+            <form onSubmit={onSubmit} className="sign_form">
+              
+               <label className="inputTitle">아이디</label>
+                        <div className="inputWrap">
+                            <input
+                                type="text"
+                                className="input"
+                                value={id}
+                                onChange={onChangeId}
+                            />
+                        </div>
 
-              <input
-                id="LOGIN_NAME"
-                value={major}
-                required
-                onChange={onChangeMajor}
-                className="login_text"
-                type="text"
-                name="id"
-                placeholder="학과"
-              />
-              <input
-                id="LOGIN_NAME"
-                value={id}
-                required
-                onChange={onChangeId}
-                className="login_text"
-                type="text"
-                name="id"
-                placeholder="아이디"
-              />
-              <input
-                id="LOGIN_PW"
-                value={pw}
-                required
-                onChange={onChangePw}
-                className="login_text"
-                type="password"
-                name="id"
-                placeholder="비밀번호"
-              />
-              <input
-                id="LOGIN_NAME"
-                value={stNum}
-                required
-                onChange={onChangeNum}
-                className="login_text"
-                type="text"
-                name="id"
-                placeholder="힉번"
-              />
+               <label className="inputTitle">비밀번호</label>
+                        <div className="inputWrap">
+                            <input
+                                type="text"
+                                className="input"
+                                value={pw}
+                                onChange={onChangePw}
+                            />
+                        </div> 
+                <label className="inputTitle">이름</label>
+                        <div className="inputWrap">
+                            <input
+                                type="text"
+                                className="input"
+                                value={name}
+                                onChange={onChangeName}
+                            />
+                        </div>        
+                <label className="inputTitle">학과</label>
+                        <div className="inputWrap">
+                            <input
+                                type="text"
+                                className="input"
+                                value={major}
+                                onChange={onChangeMajor}
+                            />
+                        </div> 
+                  <label className="inputTitle">학번</label>
+                        <div className="inputWrap">
+                            <input
+                                type="text"
+                                className="input"
+                                value={stnum}
+                                onChange={onChangeStnum}
+                            />
+                        </div> 
 
               <button
-                id="LOGIN_BTN"
-                className="login_btn"
+               
+                className="buttonWrap"
                 type="primary"
                 htmlType="submit"
               >
-                회원가입
+                회원가입 완료
               </button>
             </form>
           </div>
-        </article>
+
       </div>
     </div>
   );

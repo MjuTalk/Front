@@ -46,7 +46,7 @@ const Navbar = ({nav1, nav2, nav3, nav4, nav5, nav6, nav7, nav8, nav9, nav10}) =
                 </NavLink>
             </NavMenu>
             <NavBtn>
-                <NavBtnLink to="/" >로그인</NavBtnLink>
+                <NavBtnLink to="/">로그아웃</NavBtnLink>
             </NavBtn>
         </Nav>
     </>

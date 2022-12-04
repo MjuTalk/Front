@@ -9,6 +9,8 @@ import Bus from './pages/Bus'
 import Voc from './pages/Voc/Voc';
 import VocView from './pages/Voc/VocView';
 import VocQuestion from './pages/Voc/VocQuestion';
+import BusSheet from './pages/BusSheet';
+import Password from './pages/Password';
 
 function App() {
   return (
@@ -21,9 +23,11 @@ function App() {
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/dorm" element={<Dorm />} />
               <Route path="/bus" element={<Bus />} />
+              <Route path="/bus/sheet" element={<BusSheet />} />
               <Route path='/voc' element={<Voc />} /> 
               <Route path='/voc/:vocId' element={<VocView />} /> 
               <Route path='/voc/question' element={<VocQuestion />} /> 
+              <Route path="/new-password" element={<Password />} />
             </Routes>
           </BrowserRouter>
         </RecoilRoot>
