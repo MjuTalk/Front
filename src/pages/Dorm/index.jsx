@@ -12,6 +12,7 @@ import Voc from '../Voc/Voc'
 import Card from '../../components/Navbar/Board/Card'
 import { Nav } from 'react-bootstrap'
 import Navbar2 from '../../components/Navbar/Navbar2'
+import List from '../Voc/List'
 
 const ModalContainer = styled.div`
   position: absolute;
@@ -81,21 +82,19 @@ const index = ({ isModal, setModal }) => {
           nav1="기숙사"
           nav2="버스" />
       </h1>
-      
+
       <div>
-      
+
         <BoardListWrapper>
-            <div className="boardList-header">기숙사📝</div>
-            <div className="boardList-body" />
-          </BoardListWrapper>
+          <div className="boardList-header">기숙사📝</div>
+          <div className="boardList-body" />
+        </BoardListWrapper>
       </div>
       <div>
-                <BoardTemplate>
-                    <Voc>
-                    
-                    </Voc>
-                </BoardTemplate>
-            </div>
+        <BoardTemplate>
+          <List />
+        </BoardTemplate>
+      </div>
     </div>
   )
 }

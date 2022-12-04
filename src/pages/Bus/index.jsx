@@ -12,6 +12,7 @@ import Card from '../../components/Navbar/Board/Card'
 import BoardList from '../../components/Navbar/Board/BoardList'
 import Navbar2 from '../../components/Navbar/Navbar2'
 import Voc from '../Voc/Voc'
+import List from '../Voc/List'
 
 
 const ModalContainer = styled.div`
@@ -81,17 +82,15 @@ const index = ({ isModal, setModal }) => {
           nav2="버스" />
       </h1>
       <div>
-        
+
         <BoardListWrapper>
-            <div className="boardList-header">버스📝</div>
-            <div className="boardList-body" />
-          </BoardListWrapper>
+          <div className="boardList-header">버스📝</div>
+          <div className="boardList-body" />
+        </BoardListWrapper>
       </div>
       <div>
         <BoardTemplate>
-          <Voc>
-            
-          </Voc>
+          <List />
         </BoardTemplate>
       </div>
 

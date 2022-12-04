@@ -1,6 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './VocHeader.css';
+import {
+  EachPostLi,
+  LoadingDiv,
+  LoadingImg,
+  PagenumberDiv,
+  PagingSection,
+  PostLink,
+  PostListDiv,
+  PostRepl,
+  PostSection,
+  PostTitle,
+  PostTitleDiv,
+} from '../../pages/Voc/styledComponent';
+
+import {
+  faSun,
+  faMoon,
+  faArrowsRotate,
+  faPenToSquare,
+  faLocationPin,
+  faArrowLeft,
+  faArrowRight,
+  faSlidersH,
+} from '@fortawesome/free-solid-svg-icons';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import EachPost from '../../pages/Voc/EachPostLi';
+
 
 const VocHeader = props => {
   const { headersName, children } = props;
@@ -17,6 +45,8 @@ const VocHeader = props => {
             셔틀버스 시간표 보기
             </button>
         </Link>
+      
+        
     </div>
   )
 }
