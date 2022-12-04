@@ -84,15 +84,6 @@ const index = ({ isModal, setModal }) => {
       
       <div>
       
-        <ModalBody>
-          <Navbar2
-          nav3="3동"
-          nav4="4동"
-          nav5="5동"
-          nav6="명덕관"
-          />
-          
-        </ModalBody>
         <BoardListWrapper>
             <div className="boardList-header">기숙사📝</div>
             <div className="boardList-body" />

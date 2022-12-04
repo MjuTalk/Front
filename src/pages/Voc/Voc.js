@@ -10,7 +10,7 @@ import CommonTableRow from '../../components/Table/CommonTableRow';
 function GetData() {
     const [data, setData] = useState({});
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/toyseven/voc').then((response) => {
+        axios.get('http://43.200.116.196:8080/api/boards/').then((response) => {
             setData(response.data);
         })
     }, []);

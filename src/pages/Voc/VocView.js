@@ -4,14 +4,14 @@ import { useParams } from 'react-router-dom';
 
 import './VocView.css';
 
-function GetData(vocId) {
+function GetData(boardId) {
   const [question, setQuestion] = useState({});
   const [answer, setAnswer] = useState({});
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/toyseven/voc/search/'+vocId).then((response)=> {
-        setQuestion(response.data.question);
-        setAnswer(response.data.answer);
+    axios.get('http://43.200.116.196:8080/api/boards/1'+boardId).then((response)=> {
+        setQuestion(response.data.title);
+        setAnswer(response.data.content);
     })
   }, []);
 
@@ -44,8 +44,8 @@ function GetData(vocId) {
 }
 
 function VocView() {
-  const{vocId} = useParams();
-  const item = GetData(vocId);
+  const{boardId} = useParams();
+  const item = GetData(boardId);
 
   return (<>
     <div>

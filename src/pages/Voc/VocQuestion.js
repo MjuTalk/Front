@@ -9,7 +9,7 @@ function GetCategory() {
     const [category, setCategory] = useState({});
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/toyseven/voc/category').then((response) => {
+        axios.get('http://43.200.116.196:8080/api/boards/').then((response) => {
             setCategory(response.data);
         })
     }, []);
@@ -29,7 +29,7 @@ const HandleQuestionSubmit = async ({ body }) => {
         'Authorization': "Bearer cognito 의 access token"
     }
 
-    const response = await axios.post('http://127.0.0.1:8000/toyseven/voc/question', body, { headers: headers }).then((response) => {
+    const response = await axios.post('http://43.200.116.196:8080/api/boards/', body, { headers: headers }).then((response) => {
         console.log('status : ' + response.status);
     }).catch((error) => {
         console.log('error : ' + error);
