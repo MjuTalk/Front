@@ -1,18 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import './VocQuestion.css';
+import { data } from 'jquery';
+import Navbar from '../../components/Navbar/Navbar';
 
 
-import './VocView.css';
+const API_END_POINT = 'http://43.200.116.196:8080';
 
-function GetCategory() {
-    const [category, setCategory] = useState({});
 
-    useEffect(() => {
+
+const GetCategory = () => {
+    const [category, setCategory] = useState(['아']);
+    const navigate = useNavigate();
+
+    const useEffect = (e) => {
+        e.preventDefault();
+
+        axios.post(`${API_END_POINT}/api/boards`, {
+            categories: category,
+        })
+        .then(function (res) {
+            console.log(res.result.data.categories)
+            setCategory(res.data)
+        })
+    }
+
+    /*useEffect(() => {
         axios.get('http://43.200.116.196:8080/api/boards/').then((response) => {
             setCategory(response.data);
         })
     }, []);
+    */
 
     const categories = (Object.values(category)).map((item) => (
         <option key={item.id} value={item.id}>
@@ -26,14 +45,23 @@ function GetCategory() {
 const HandleQuestionSubmit = async ({ body }) => {
     const headers = {
         'Content-Type': 'application/json',
-        'Authorization': "Bearer cognito 의 access token"
+        'Authorization': localStorage.getItem("SavedToken")
     }
 
-    const response = await axios.post('http://43.200.116.196:8080/api/boards/', body, { headers: headers }).then((response) => {
+    const response = await axios.post(`${API_END_POINT}/api/boards`, body, { headers:{ AxiosHeaders: localStorage.getItem('SavedToken',) }  }).then((response) => {
         console.log('status : ' + response.status);
     }).catch((error) => {
         console.log('error : ' + error);
     });
+
+    const token = localStorage.getItem('SavedToken');
+
+    return {
+        headers: {
+          ...headers,
+          authorization: token ? `Bearer ${token}` : "",
+        }
+    }
 }
 
 function VocQuestion() {
@@ -54,6 +82,14 @@ function VocQuestion() {
     }
 
     return (<>
+        
+      <h1>
+        <Navbar
+          nav1="기숙사"
+          nav2="버스" />
+      </h1>
+      
+      
         <h2 align="center">게시글 작성</h2>
         <div className="voc-view-wrapper">
             <div className="voc-view-row">
@@ -71,7 +107,7 @@ function VocQuestion() {
                 <label>내용</label>
                 <textarea onChange={(event) => setContent(event.target.value)}></textarea>
             </div>
-            <Link to='/voc/'>
+            <Link to='/dorm'>
                 <button className="voc-view-go-list-btn" onClick={() => HandleQuestionSubmit({ body })}>등록</button>
                 </Link>
 

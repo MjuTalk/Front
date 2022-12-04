@@ -9,7 +9,7 @@ function GetData(boardId) {
   const [answer, setAnswer] = useState({});
 
   useEffect(() => {
-    axios.get('http://43.200.116.196:8080/api/boards/1'+boardId).then((response)=> {
+    axios.get('http://43.200.116.196:8080/api/boards/'+boardId).then((response)=> {
         setQuestion(response.data.title);
         setAnswer(response.data.content);
     })

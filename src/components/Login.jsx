@@ -23,11 +23,15 @@ const Login = () => {
             })
             .then(function (response) {
                 alert("로그인 성공!");
+                let originToken = response.data.originToken;
+                let refreshToken = response.data.refreshToken;
+                localStorage.setItem("SavedToken", 'Bearer ' + response.data.originToken);
                 goToMain();
+
+                
                 // // //로그인 성공시
                 if (response.code === 200) {
-                    let originToken = response.result.data.originToken;
-                    let refreshToken = response.result.data.refreshToken;
+                    alert("dd")
                     localStorage.setItem('login-token', originToken);
                 } else if (response.code === 404) {
                     alert(response.result.message);
