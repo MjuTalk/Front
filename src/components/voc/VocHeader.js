@@ -16,10 +16,6 @@ const VocHeader = props => {
             <button align="right" className="voc-view-go-list-btn" >
             셔틀버스 시간표 보기
             </button>
-        </Link><Link to='/dorm/yummy'>
-            <button align="right" className="voc-view-go-list-btn" >
-            오늘의 기숙사 식단표
-            </button>
         </Link>
     </div>
   )

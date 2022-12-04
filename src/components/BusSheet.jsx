@@ -1,12 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const API_END_POINT = 'http://43.200.116.196:8080';
 
-function BusSheet() {
-    const [users, setUsers] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-  
+const BusSheet = () => {
+  const [users, setUsers] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [stop, setStop] = useState(null);
+
+
+  const fetchUsers = (e) =>
+    e.preventDefault();
+  axios
+    .get(`${API_END_POINT}/api/bus`, {
+      stop_nm: stop
+    })
+    .then(function (response) {
+      alert("로그인 성공!");
+      setStop(response.data);
+
+      if (response.code === 200) {
+        console.log(response);
+        alert("에러");
+        
+      }
+      else if (response.status === 401) {
+        console.log(response);
+        alert("zz");
+      } 
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+
+
+
+/*
     useEffect(() => {
       const fetchUsers = async () => {
         try {
@@ -41,5 +74,7 @@ function BusSheet() {
       </ul>
     );
   }
-  
-  export default BusSheet;
+  */
+
+
+export default BusSheet;
